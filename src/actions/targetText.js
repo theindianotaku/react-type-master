@@ -9,6 +9,7 @@ export function setTargetHasErrored(bool) {
     hasErrored: bool
   };
 }
+
 export function setTargetIsLoading(bool) {
   return {
     type: 'SET_TARGET_IS_LOADING',

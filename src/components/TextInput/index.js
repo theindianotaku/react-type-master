@@ -2,10 +2,36 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input } from 'semantic-ui-react';
 
+import { setErrorCharCount, setSuccessCharCount } from '../../actions/progressCount';
+
 class TextInput extends Component {
   state = {
     value: '',
     isError: false,
+  }
+
+  checkIfSuccess = (value) => {
+    const targetWord = this.props.textArray[this.props.progress.wordCount];
+    console.log(targetWord);
+    let isError = false;
+    let charCount = 0;
+    let errorCharCount = 0;
+    for (let i = 0; i < value.length; i++) {
+      if (!isError) {
+        if (targetWord[i] === value[i]) {
+          charCount++;
+        } else {
+          isError = true;
+          errorCharCount++;
+        }
+      } else {
+        errorCharCount++;
+      }
+    }
+
+    console.log(charCount, ' ', errorCharCount);
+    this.props.setErrorCharCount(errorCharCount);
+    this.props.setSuccessCharCount(charCount);
   }
 
   handleChange = (e) => {
@@ -13,6 +39,8 @@ class TextInput extends Component {
 
     const value = e.target.value;
     this.setState(() => ({ value }));
+
+    this.checkIfSuccess(value);
   }
 
   render () {
@@ -38,4 +66,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(TextInput);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setErrorCharCount: (count) => dispatch(setErrorCharCount(count)),
+    setSuccessCharCount: (count) => dispatch(setSuccessCharCount(count))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextInput);

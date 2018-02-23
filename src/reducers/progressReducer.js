@@ -1,5 +1,5 @@
 const initialState = {
-  wordCount: 0,
+  wordCount: 2,
   charCount: 0,
   errorCharCount: 0
 };
@@ -15,19 +15,17 @@ export const progressReducer = (state = initialState, action) => {
       };
     }
 
-    case 'SUCCESS_CHAR_COUNT': {
-      const charCount = state.charCount + 1;
+    case 'SET_SUCCESS_CHAR_COUNT': {
       return {
         ...state,
-        charCount
+        charCount: action.charCount
       };
     }
 
-    case 'ERROR_CHAR_COUNT': {
-      const errorCharCount = state.errorCharCount + 1;
+    case 'SET_ERROR_CHAR_COUNT': {
       return {
         ...state,
-        errorCharCount
+        errorCharCount: action.errorCharCount
       };
     }
 
