@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Input } from 'semantic-ui-react';
 
 class TextInput extends Component {
   state = {
@@ -13,17 +14,17 @@ class TextInput extends Component {
   }
 
   render () {
-
     return (
       <div>
-        <input
-          type="text"
+        <Input 
+          focus
           value={this.state.value}
           onChange={this.handleChange}
+          placeholder='Search...' 
         />
       </div>
     );
-  };
+  }
 }
 
 export default TextInput;

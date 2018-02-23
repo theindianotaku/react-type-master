@@ -1,18 +1,29 @@
-import {setTargetText} from '../actions/targetText';
+import {setTargetTextSuccess, setTargetHasErrored, setTargetIsLoading} from '../actions/targetText';
 import {trimStringOfPtags} from '../utilities/stringUtils';
 
 const fetchTargetText = () => {
   return (dispatch) => {
-    const url = 'http://www.randomtext.me/api/';
+    const url = 'http://www.randomtext.me/api/gibberish/p-2/9-11';
+    dispatch(setTargetIsLoading(true));
 
     fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        dispatch(setTargetIsLoading(false));
+        return response;
+      })
+
       .then((response) => response.json())
+
       .then((responseData) => {
         const trimData = trimStringOfPtags(responseData.text_out);
         
-        dispatch(setTargetText(trimData));
+        dispatch(setTargetTextSuccess(trimData));
       })
-      .catch(err => {throw err});
+
+      .catch(() => dispatch(setTargetHasErrored(true)));
   };
 };
 

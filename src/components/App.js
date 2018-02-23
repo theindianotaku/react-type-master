@@ -13,17 +13,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TargetText textArray={this.props.textArray} />
+        <TargetText />
         <TextInput />
       </div>
     );
   }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    textArray: state.target.textArray
-  };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -32,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

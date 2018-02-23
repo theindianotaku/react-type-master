@@ -1,26 +1,36 @@
 const initialState = {
-  count: 0,
-  errorCount: 0
+  wordCount: 0,
+  charCount: 0,
+  errorCharCount: 0
 };
 
 export const progressReducer = (state = initialState, action) => {
   switch(action.type) {
-    case 'SUCCESS_COUNT': {
-      const count = state.count + 1;
 
+    case 'SUCCESS_WORD_COUNT': {
+      const wordCount = state.wordCount + 1;
       return {
         ...state,
-        count
+        wordCount
       };
     }
-    case 'ERROR_COUNT': {
-      const errorCount = state.errorCount + 1;
 
+    case 'SUCCESS_CHAR_COUNT': {
+      const charCount = state.charCount + 1;
       return {
         ...state,
-        errorCount
+        charCount
       };
     }
+
+    case 'ERROR_CHAR_COUNT': {
+      const errorCharCount = state.errorCharCount + 1;
+      return {
+        ...state,
+        errorCharCount
+      };
+    }
+
     default:
       return state;
   }
