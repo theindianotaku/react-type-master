@@ -1,3 +1,5 @@
-@import './base/base';
+@import './base/_variables';
+@import './base/_base';
 
-@import './components/app';
+@import './components/_app';
+@import './components/_target';

@@ -17,7 +17,8 @@ class TextInput extends Component {
     return (
       <div>
         <Input 
-          focus
+          focus fluid
+          size='huge'
           value={this.state.value}
           onChange={this.handleChange}
           placeholder='Search...' 

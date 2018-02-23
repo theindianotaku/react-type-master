@@ -13,7 +13,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TargetText />
+        <div className="target-area">
+          <TargetText />
+        </div>
         <TextInput />
       </div>
     );

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Header } from 'semantic-ui-react';
 
+import TextWrapper from './TextWrapper';
+
 class TargetText extends Component {
   state = {
     text: ''
@@ -18,9 +20,7 @@ class TargetText extends Component {
 
     return (
       <Header as='h1'>
-        <span>
-          {this.props.targetText ? this.props.targetText.join(' ') : ''}
-        </span>
+        {this.props.textArray ? <TextWrapper textArray={this.props.textArray} progress={this.props.progress} /> : null}
       </Header>
     );
   }
@@ -30,7 +30,7 @@ const mapStateToProps = (state) => {
   return {
     hasErrored: state.target.hasErrored,
     isLoading: state.target.isLoading,
-    targetText: state.target.textArray,
+    textArray: state.target.textArray,
     progress : state.progress
   };
 };

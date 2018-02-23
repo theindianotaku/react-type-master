@@ -3,3 +3,37 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.text-red {
+  color: $red !important;
+}
+
+.text-green {
+  color: $green !important;
+}
+
+.text-blue {
+  color: $blue !important;
+}
+
+.text-blue-grey {
+  color: $blue-grey !important;
+}
+
+.target__success {
+  @extend .text-green;
+  background-color: lighten($green, 50%);
+  border-radius: 2px;
+}
+
+.target__indeterminate {
+  @extend .text-blue;
+  border-radius: 2px;
+  border-bottom: 2px solid lighten($blue, 45%);
+}
+
+.target__error {
+  @extend .text-red;
+  background-color: lighten($red, 45%);
+  border-radius: 2px;
+}

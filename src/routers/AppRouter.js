@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 import App from '../components/App';
-import Header from '../components/Header';
+import Header from '../components/Common/Header';
 
 export const history = createHistory();
 
