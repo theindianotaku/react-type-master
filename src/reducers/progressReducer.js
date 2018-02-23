@@ -1,7 +1,7 @@
 const initialState = {
-  wordCount: 1,
-  charCount: 2,
-  errorCharCount: 10
+  wordCount: 0,
+  charCount: 0,
+  errorCharCount: 0
 };
 
 export const progressReducer = (state = initialState, action) => {

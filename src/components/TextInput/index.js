@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Input } from 'semantic-ui-react';
 
 class TextInput extends Component {
   state = {
-    value: ''
+    value: '',
+    isError: false,
   }
 
   handleChange = (e) => {
@@ -16,16 +18,24 @@ class TextInput extends Component {
   render () {
     return (
       <div>
-        <Input 
+        <Input
+          error={this.state.isError}
           focus fluid
           size='huge'
           value={this.state.value}
           onChange={this.handleChange}
-          placeholder='Search...' 
+          placeholder='type it as quick as possible'
         />
       </div>
     );
   }
 }
 
-export default TextInput;
+const mapStateToProps = (state) => {
+  return {
+    textArray: state.target.textArray,
+    progress : state.progress
+  };
+};
+
+export default connect(mapStateToProps)(TextInput);
