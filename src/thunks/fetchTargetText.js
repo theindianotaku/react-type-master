@@ -3,7 +3,7 @@ import {trimStringOfPtags} from '../utilities/stringUtils';
 
 const fetchTargetText = () => {
   return (dispatch) => {
-    const url = 'http://www.randomtext.me/api/gibberish/p-2/9-11';
+    const url = 'https://www.randomtext.me/api/gibberish/p-2/9-11';
     dispatch(setTargetIsLoading(true));
 
     fetch(url)
@@ -19,7 +19,7 @@ const fetchTargetText = () => {
 
       .then((responseData) => {
         const trimData = trimStringOfPtags(responseData.text_out);
-        
+
         dispatch(setTargetTextSuccess(trimData));
       })
 
