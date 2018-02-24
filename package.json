@@ -6,12 +6,15 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p watch-css start-js",
+    "dev": "npm-run-all -p watch-css start-js",
+    "start": "node server/server.js",
     "build": "react-scripts build",
+    "heroku-postbuild": "yarn run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "express": "^4.16.2",
     "lodash": "^4.17.5",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
