@@ -11,3 +11,9 @@ export const setErrorCharCount = (errorCharCount) => {
     errorCharCount
   };
 };
+
+export const incrementWordCount = () => {
+  return {
+    type: 'INCREMENT_WORD_COUNT'
+  };
+};

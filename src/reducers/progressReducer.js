@@ -1,5 +1,5 @@
 const initialState = {
-  wordCount: 2,
+  wordCount: 0,
   charCount: 0,
   errorCharCount: 0
 };
@@ -7,11 +7,13 @@ const initialState = {
 export const progressReducer = (state = initialState, action) => {
   switch(action.type) {
 
-    case 'SUCCESS_WORD_COUNT': {
+    case 'INCREMENT_WORD_COUNT': {
       const wordCount = state.wordCount + 1;
       return {
         ...state,
-        wordCount
+        wordCount,
+        charCount: 0,
+        errorCharCount: 0
       };
     }
 

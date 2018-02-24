@@ -2,34 +2,60 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input } from 'semantic-ui-react';
 
-import { setErrorCharCount, setSuccessCharCount } from '../../actions/progressCount';
+import { setErrorCharCount, setSuccessCharCount, incrementWordCount } from '../../actions/progressCount';
 
 class TextInput extends Component {
   state = {
     value: '',
     isError: false,
+    wordDone: false
+  }
+
+  increaseWordCount = () => {
+    this.setState(() => ({value: ''}));
+    this.props.incrementWordCount();
   }
 
   checkIfSuccess = (value) => {
     const targetWord = this.props.textArray[this.props.progress.wordCount];
-    console.log(targetWord);
     let isError = false;
     let charCount = 0;
     let errorCharCount = 0;
-    for (let i = 0; i < value.length; i++) {
+
+    const setCount = (i) => {
       if (!isError) {
         if (targetWord[i] === value[i]) {
+          isError = false;
+          this.setState(() => ({isError: false}));
           charCount++;
         } else {
           isError = true;
+          this.setState(() => ({isError: true}));
           errorCharCount++;
         }
       } else {
         errorCharCount++;
       }
+    };
+
+    if (value) {
+      for (let i = 0; i < value.length; i++) {
+        if ( i < targetWord.length || i > targetWord.length) {
+          setCount(i);
+        } else if ( i === targetWord.length) {
+          if (value[i] === ' ' && !isError) {
+            this.increaseWordCount();
+            errorCharCount = 0;
+            charCount = 0;
+          } else {
+            setCount(i);
+          }
+        }
+      }
+    } else {
+      this.setState(() => ({isError: false}));
     }
 
-    console.log(charCount, ' ', errorCharCount);
     this.props.setErrorCharCount(errorCharCount);
     this.props.setSuccessCharCount(charCount);
   }
@@ -69,7 +95,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setErrorCharCount: (count) => dispatch(setErrorCharCount(count)),
-    setSuccessCharCount: (count) => dispatch(setSuccessCharCount(count))
+    setSuccessCharCount: (count) => dispatch(setSuccessCharCount(count)),
+    incrementWordCount: () => dispatch(incrementWordCount())
   };
 };
 
