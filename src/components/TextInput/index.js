@@ -4,11 +4,13 @@ import { Input } from 'semantic-ui-react';
 
 import { setErrorCharCount, setSuccessCharCount, incrementWordCount } from '../../actions/progressCount';
 
+// import { history } from '../../routers/AppRouter';
+
 class TextInput extends Component {
   state = {
     value: '',
     isError: false,
-    wordDone: false
+    isDisabled: false
   }
 
   increaseWordCount = () => {
@@ -16,9 +18,20 @@ class TextInput extends Component {
     this.props.incrementWordCount();
   }
 
+  stopTest = () => {
+    this.setState(() => ({
+      value: '',
+      isError: false,
+      isDisabled: true
+    }));
+    // history.push('/results');
+  }
+
   checkIfSuccess = (value) => {
+    const targetWordCount = this.props.textArray.length;
     const targetWord = this.props.textArray[this.props.progress.wordCount];
     let isError = false;
+    let wordCount = this.props.progress.wordCount;
     let charCount = 0;
     let errorCharCount = 0;
 
@@ -44,6 +57,7 @@ class TextInput extends Component {
           setCount(i);
         } else if ( i === targetWord.length) {
           if (value[i] === ' ' && !isError) {
+            wordCount = wordCount + 1;
             this.increaseWordCount();
             errorCharCount = 0;
             charCount = 0;
@@ -56,6 +70,10 @@ class TextInput extends Component {
       this.setState(() => ({isError: false}));
     }
 
+    if (wordCount === targetWordCount) {
+      this.stopTest();
+    }
+
     this.props.setErrorCharCount(errorCharCount);
     this.props.setSuccessCharCount(charCount);
   }
@@ -65,7 +83,6 @@ class TextInput extends Component {
 
     const value = e.target.value;
     this.setState(() => ({ value }));
-
     this.checkIfSuccess(value);
   }
 
@@ -74,7 +91,8 @@ class TextInput extends Component {
       <div>
         <Input
           error={this.state.isError}
-          focus fluid
+          disabled={this.state.isDisabled}
+          fluid
           size='huge'
           value={this.state.value}
           onChange={this.handleChange}

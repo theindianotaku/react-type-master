@@ -6,6 +6,25 @@ import TargetText from './TargetText';
 import TextInput from './TextInput';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      testStatus: 'stopped'
+    };
+  }
+
+  stopTest = () => {
+    this.setTestStatus('stopped');
+  }
+
+  beginTest = () => {
+
+  }
+
+  setTestStatus = (status) => {
+    this.setState(() => ({testStatus : status}));
+  }
+
   componentDidMount = () => {
     this.props.fetchTargetText();
   }
@@ -14,7 +33,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="target-area">
-          <TargetText />
+          <TargetText
+            stopTest={this.stopTest}
+          />
         </div>
         <TextInput />
       </div>
