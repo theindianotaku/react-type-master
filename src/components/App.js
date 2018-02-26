@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Divider } from 'semantic-ui-react';
 
 import fetchTargetText from '../thunks/fetchTargetText';
 import TargetText from './TargetText';
 import TextInput from './TextInput';
+import Timer from './Timer';
 
 class App extends Component {
   constructor(props) {
@@ -27,17 +29,23 @@ class App extends Component {
 
   componentDidMount = () => {
     this.props.fetchTargetText();
+    this.setState(() => ({testStatus: 'started'}));
   }
 
   render() {
     return (
       <div className="App">
+        <Timer />
+        <Divider />
         <div className="target-area">
-          <TargetText
+          <TargetText />
+        </div>
+        <Divider />
+        {this.state.testStatus === 'started' &&
+          <TextInput
             stopTest={this.stopTest}
           />
-        </div>
-        <TextInput />
+        }
       </div>
     );
   }

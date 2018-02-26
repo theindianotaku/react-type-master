@@ -1,0 +1,12 @@
+.timer {
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.timer__counter {
+  margin-left: auto;
+}

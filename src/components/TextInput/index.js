@@ -24,6 +24,7 @@ class TextInput extends Component {
       isError: false,
       isDisabled: true
     }));
+    this.props.stopTest();
     // history.push('/results');
   }
 
