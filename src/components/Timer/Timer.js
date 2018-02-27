@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from 'semantic-ui-react';
 
 class TimerCount extends React.Component {
   constructor(props) {
@@ -36,6 +37,13 @@ class TimerCount extends React.Component {
       this.timer = setInterval(this.countDown, 1000);
     }
   }
+  
+  startTestTimer = (timerCount) => {
+    this.timer = 0;
+    let timeLeftVar = this.secondsToTime(timerCount);
+    this.setState({ time: timeLeftVar, seconds: timerCount, isPrep: false });
+    this.startTimer();
+  }
 
   countDown = () => {
     // Remove one second, set state so a re-render happens.
@@ -49,10 +57,7 @@ class TimerCount extends React.Component {
     if (seconds === 0) {
       clearInterval(this.timer);
       if (this.state.isPrep) {
-        this.timer = 0;
-        let timeLeftVar = this.secondsToTime(this.testTime);
-        this.setState({ time: timeLeftVar, seconds: this.testTime, isPrep: false });
-        this.startTimer();
+        this.startTestTimer(this.testTime);
       } else {
         this.props.handleTestTimerStop();
       }
@@ -61,7 +66,11 @@ class TimerCount extends React.Component {
 
   render() {
     return(
-      <span>
+      <span className='text-blue'>
+        {this.state.isPrep &&
+          <span className='text-blue'>Prep time  </span>
+        }
+        <Icon name='time' className='text-blue' />
         <strong>{this.state.time.m}</strong>m <strong>{this.state.time.s}</strong>s
       </span>
     );

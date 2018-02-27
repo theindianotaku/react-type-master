@@ -56,6 +56,9 @@ class TextInput extends Component {
       for (let i = 0; i < value.length; i++) {
         if ( i < targetWord.length || i > targetWord.length) {
           setCount(i);
+          if((wordCount === targetWordCount - 1) && (i === targetWord.length -1) && !isError) {
+            this.stopTest();
+          }
         } else if ( i === targetWord.length) {
           if (value[i] === ' ' && !isError) {
             wordCount = wordCount + 1;
@@ -69,10 +72,6 @@ class TextInput extends Component {
       }
     } else {
       this.setState(() => ({isError: false}));
-    }
-
-    if (wordCount === targetWordCount) {
-      this.stopTest();
     }
 
     this.props.setErrorCharCount(errorCharCount);
