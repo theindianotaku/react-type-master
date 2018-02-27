@@ -1,5 +1,5 @@
 import {setTargetTextSuccess, setTargetHasErrored, setTargetIsLoading} from '../actions/targetText';
-import {trimStringOfPtags} from '../utilities/stringUtils';
+import {trimStringOfPtags} from '../utilities';
 
 const fetchTargetText = () => {
   return (dispatch) => {

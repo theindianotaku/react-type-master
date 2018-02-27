@@ -1,8 +1,6 @@
 const initialState = {
-  totalCount: 0,
   successCount: 0,
-  errorCount: 0,
-  wpmArray: [],
+  totalCount: 0,
   timeTaken: 0
 };
 
@@ -16,11 +14,11 @@ export const resultsReducer = (state = initialState, action) => {
       };
     }
 
-    case 'INCREMENT_ERROR_COUNT': {
-      const errorCount = state.errorCount + 1;
+    case 'INCREMENT_TOTAL_COUNT': {
+      const totalCount = state.totalCount + 1;
       return {
         ...state,
-        errorCount
+        totalCount
       };
     }
 

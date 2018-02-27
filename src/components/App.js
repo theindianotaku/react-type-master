@@ -6,6 +6,7 @@ import fetchTargetText from '../thunks/fetchTargetText';
 import TargetText from './TargetText';
 import TextInput from './TextInput';
 import Timer from './Timer';
+import Results from './Results';
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class App extends Component {
     this.setState(() => ({testStatus : status}));
   }
 
+  
+
   componentDidMount = () => {
     this.props.fetchTargetText();
     this.setState(() => ({testStatus: 'started'}));
@@ -35,21 +38,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Timer />
-        <Divider />
-        <div className="target-area">
-          <TargetText />
+        <div className="test-area">
+          <Timer />
+          <Divider />
+          <div className="target-area">
+            <TargetText />
+          </div>
+          <Divider />
+          {this.state.testStatus === 'started' &&
+            <TextInput
+              stopTest={this.stopTest}
+            />
+          }
         </div>
-        <Divider />
-        {this.state.testStatus === 'started' &&
-          <TextInput
-            stopTest={this.stopTest}
-          />
-        }
+        {/* <Results results={this.props.results} /> */}
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  results: state.results
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -57,4 +67,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,13 +2,14 @@ import React from 'react';
 
 const TextWrapper = ({progress : {charCount, errorCharCount, wordCount}, textArray}) => {
   const doneTextArray = textArray.slice(0, wordCount);
+
   const doingTextArray = textArray.slice(wordCount);
-
   const doingText = doingTextArray.join(' ');
-
   const doingSuccess = doingText.slice(0, charCount);
   const doingError = doingText.slice(charCount, charCount + errorCharCount);
+
   const toDoChar = doingText[charCount + errorCharCount];
+  
   const rest = doingText.slice(charCount + errorCharCount + 1);
 
   return (

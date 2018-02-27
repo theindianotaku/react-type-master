@@ -1,5 +1,5 @@
 const initialState = {
-  wordCount: 17,
+  wordCount: 0,
   charCount: 0,
   errorCharCount: 0
 };

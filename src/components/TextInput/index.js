@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input } from 'semantic-ui-react';
+import { checkIfValidInput } from '../../utilities';
 
 import { setErrorCharCount, setSuccessCharCount, incrementWordCount } from '../../actions/progressCount';
-
+import { incrementSuccessCount, incrementTotalCount, setTimeTaken } from '../../actions/results';
 // import { history } from '../../routers/AppRouter';
 
 class TextInput extends Component {
@@ -54,6 +55,7 @@ class TextInput extends Component {
 
     if (value) {
       for (let i = 0; i < value.length; i++) {
+
         if ( i < targetWord.length || i > targetWord.length) {
           setCount(i);
           if((wordCount === targetWordCount - 1) && (i === targetWord.length -1) && !isError) {
@@ -80,10 +82,20 @@ class TextInput extends Component {
 
   handleChange = (e) => {
     e.preventDefault();
-
     const value = e.target.value;
     this.setState(() => ({ value }));
     this.checkIfSuccess(value);
+  }
+
+  handleKeyUp = (e) => {
+    const targetWord = this.props.textArray[this.props.progress.wordCount];
+    const value = this.state.value;
+    const index = value.length;
+
+    if (checkIfValidInput(e.key) && !e.metaKey) {
+      this.props.incrementTotalCount();
+      if (value[index - 1] === targetWord[index - 1]) this.props.incrementSuccessCount();
+    }
   }
 
   render () {
@@ -96,6 +108,7 @@ class TextInput extends Component {
           size='huge'
           value={this.state.value}
           onChange={this.handleChange}
+          onKeyUp={this.handleKeyUp}
           placeholder='type it as quick as possible'
         />
       </div>
@@ -114,7 +127,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setErrorCharCount: (count) => dispatch(setErrorCharCount(count)),
     setSuccessCharCount: (count) => dispatch(setSuccessCharCount(count)),
-    incrementWordCount: () => dispatch(incrementWordCount())
+    incrementWordCount: () => dispatch(incrementWordCount()),
+    incrementSuccessCount: () => dispatch(incrementSuccessCount()),
+    incrementTotalCount: () => dispatch(incrementTotalCount()),
+    setTimeTaken: (timeTaken) => dispatch(setTimeTaken(timeTaken)),
   };
 };
 
