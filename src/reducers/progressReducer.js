@@ -2,11 +2,26 @@ const initialState = {
   wordCount: 0,
   charCount: 0,
   errorCharCount: 0,
-  timerCount: 0
+  timerCount: 0,
+  testStatus: 'YET_TO_START'
 };
 
 export const progressReducer = (state = initialState, action) => {
   switch(action.type) {
+    case 'START_TEST': {
+      return {
+        ...state,
+        testStatus: 'IN_PROGRESS'
+      };
+    }
+
+    case 'STOP_TEST': {
+      return {
+        ...state,
+        testStatus: 'COMPLETED'
+      };
+    }
+
     case 'INCREMENT_WORD_COUNT': {
       const wordCount = state.wordCount + 1;
       return {

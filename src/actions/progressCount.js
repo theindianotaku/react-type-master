@@ -1,3 +1,9 @@
+export const startTest = () => {
+  return {
+    type: 'START_TEST'
+  };
+};
+
 export const setSuccessCharCount = (charCount) => {
   return {
     type: 'SET_SUCCESS_CHAR_COUNT',
