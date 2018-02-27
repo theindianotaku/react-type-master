@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Input } from 'semantic-ui-react';
 import { checkIfValidInput } from '../../utilities';
 
-import { setErrorCharCount, setSuccessCharCount, incrementWordCount } from '../../actions/progressCount';
-import { incrementSuccessCount, incrementTotalCount, setTimeTaken } from '../../actions/results';
+import { setErrorCharCount, setSuccessCharCount } from '../../actions/progressCount';
+import { incrementSuccessCount, incrementTotalCount } from '../../actions/results';
 // import { history } from '../../routers/AppRouter';
 
 class TextInput extends Component {
@@ -127,10 +127,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setErrorCharCount: (count) => dispatch(setErrorCharCount(count)),
     setSuccessCharCount: (count) => dispatch(setSuccessCharCount(count)),
-    incrementWordCount: () => dispatch(incrementWordCount()),
     incrementSuccessCount: () => dispatch(incrementSuccessCount()),
-    incrementTotalCount: () => dispatch(incrementTotalCount()),
-    setTimeTaken: (timeTaken) => dispatch(setTimeTaken(timeTaken)),
+    incrementTotalCount: () => dispatch(incrementTotalCount())
   };
 };
 
