@@ -1,8 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
-
-import { incrementTimerCount } from '../../actions/progressCount';
 
 class TimerCount extends React.Component {
   constructor(props) {
@@ -71,6 +68,10 @@ class TimerCount extends React.Component {
     this.startTimer();
   }
 
+  componentWillUnmount = () => {
+    clearInterval(this.timer);
+  }
+
   render() {
     return(
       <span className='text-blue'>
@@ -83,11 +84,5 @@ class TimerCount extends React.Component {
     );
   }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     incrementTimerCount: () => dispatch(incrementTimerCount())
-//   };
-// };
 
 export default TimerCount;

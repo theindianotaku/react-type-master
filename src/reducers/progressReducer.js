@@ -1,5 +1,5 @@
 const initialState = {
-  wordCount: 0,
+  wordCount: 17,
   charCount: 0,
   errorCharCount: 0,
   timerCount: 0,
@@ -12,6 +12,13 @@ export const progressReducer = (state = initialState, action) => {
       return {
         ...state,
         testStatus: 'IN_PROGRESS'
+      };
+    }
+
+    case 'COMPLETE_TEST': {
+      return {
+        ...state,
+        testStatus: 'COMPLETED'
       };
     }
 

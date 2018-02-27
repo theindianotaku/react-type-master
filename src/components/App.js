@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Divider } from 'semantic-ui-react';
+import { history } from '../routers/AppRouter';
 
 import fetchTargetText from '../thunks/fetchTargetText';
 import { setTimeElapsed } from '../actions/results';
-import { incrementWordCount } from '../actions/progressCount';
+import { incrementWordCount, completeTest } from '../actions/progressCount';
 
 import TargetText from './TargetText';
 import TextInput from './TextInput';
@@ -15,7 +16,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      testStatus: 'stopped',
       timerCount: 0
     };
   }
@@ -26,20 +26,19 @@ class App extends Component {
   }
 
   stopTest = () => {
-    this.setTestStatus('stopped');
-  }
-
-  beginTest = () => {
-
-  }
-
-  setTestStatus = (status) => {
-    this.setState(() => ({testStatus : status}));
+    this.props.completeTest();
+    history.push('/results');
   }
 
   incrementWordCount = () => {
     this.props.incrementWordCount();
     this.props.setTimeElapsed(this.state.timerCount);
+  }
+
+  componentWillMount = () => {
+    if (this.props.testStatus !== 'IN_PROGRESS') {
+      history.push('/');
+    }
   }
 
   componentDidMount = () => {
@@ -53,6 +52,7 @@ class App extends Component {
         <div className="test-area">
           <Timer 
             increaseTimerCount={this.increaseTimerCount}
+            stopTest={this.stopTest}
           />
           <Divider />
           <div className="target-area">
@@ -73,7 +73,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  results: state.results
+  results: state.results,
+  testStatus: state.progress.testStatus
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -81,6 +82,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchTargetText: () => dispatch(fetchTargetText()),
     incrementWordCount: () => dispatch(incrementWordCount()),
     setTimeElapsed: (timeElapsed) => dispatch(setTimeElapsed(timeElapsed)),
+    completeTest: () => dispatch(completeTest())
   };
 };
 

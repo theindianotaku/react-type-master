@@ -4,6 +4,12 @@ export const startTest = () => {
   };
 };
 
+export const completeTest = () => {
+  return {
+    type: 'COMPLETE_TEST'
+  };
+};
+
 export const setSuccessCharCount = (charCount) => {
   return {
     type: 'SET_SUCCESS_CHAR_COUNT',

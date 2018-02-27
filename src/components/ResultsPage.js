@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import { calcWPM, calcAccuracy } from '../utilities';
 import { resetProgress } from '../actions/progressCount';
@@ -8,6 +8,7 @@ import { resetResults } from '../actions/results';
 
 const ResultsPage = ({ 
   results : { successCount, totalCount, timeElapsed },
+  testStatus,
   resetProgress,
   resetResults
 }) => {
@@ -17,21 +18,26 @@ const ResultsPage = ({
   };
 
   return (
-    <div>
-      <Link 
-        className="ui button secondary" 
-        to="/"
-        onClick={resetTest}
-      >Return Home</Link>
-      <p>{`Accuracy: ${calcAccuracy(successCount, totalCount)}%`}</p>
-      <p>{`Words per minute: ${calcWPM(successCount, timeElapsed)}`}</p>
-    </div>
+    testStatus === 'COMPLETED' ? (
+      <div>
+        <Link 
+          className="ui button secondary" 
+          to="/"
+          onClick={resetTest}
+        >Return Home</Link>
+        <p>{`Accuracy: ${calcAccuracy(successCount, totalCount)}%`}</p>
+        <p>{`Words per minute: ${calcWPM(successCount, timeElapsed)}`}</p>
+      </div>
+    ) : (
+      <Redirect to='/' />
+    )
   );
 };
 
 const mapStateToProps = (state) => {
   return {
-    results : state.results
+    results : state.results,
+    testStatus: state.progress.testStatus
   };
 };
 

@@ -5,7 +5,6 @@ import { checkIfValidInput } from '../../utilities';
 
 import { setErrorCharCount, setSuccessCharCount } from '../../actions/progressCount';
 import { incrementSuccessCount, incrementTotalCount } from '../../actions/results';
-// import { history } from '../../routers/AppRouter';
 
 class TextInput extends Component {
   state = {
@@ -26,7 +25,6 @@ class TextInput extends Component {
       isDisabled: true
     }));
     this.props.stopTest();
-    // history.push('/results');
   }
 
   checkIfSuccess = (value) => {
