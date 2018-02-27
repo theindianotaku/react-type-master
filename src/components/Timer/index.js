@@ -3,9 +3,12 @@ import React from 'react';
 import TimerCount from './Timer';
 
 class Timer extends React.Component {
-
   handleTestTimerStop = () => {
     console.log('your time is up');
+  }
+
+  increaseTimerCount = () => {
+    this.props.increaseTimerCount();
   }
 
   render() {
@@ -17,6 +20,7 @@ class Timer extends React.Component {
             prepTime={5}
             testTime={120}
             handleTestTimerStop={this.handleTestTimerStop}
+            increaseTimerCount={this.increaseTimerCount}
           />
         </span>
       </div>

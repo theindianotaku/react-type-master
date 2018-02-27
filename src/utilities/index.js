@@ -23,3 +23,11 @@ export const checkIfValidInput = (key) => {
 
   return _.findIndex(invalidInputs, (item) => (item === key)) === -1 ? true : false;
 };
+
+export const calcWPM = (successCount, timeElapsed) => {
+  return (((successCount / 5) / timeElapsed) * 60);
+};
+
+export const calcAccuracy = (successCount, totalCount) => {
+  return ((successCount / totalCount) * 100);
+};

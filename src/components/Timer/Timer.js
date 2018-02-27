@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
+
+import { incrementTimerCount } from '../../actions/progressCount';
 
 class TimerCount extends React.Component {
   constructor(props) {
@@ -9,7 +12,7 @@ class TimerCount extends React.Component {
     this.testTime = props.testTime;
   }
 
-  secondsToTime(secs){
+  secondsToTime = (secs) => {
     let hours = Math.floor(secs / (60 * 60));
 
     let divisor_for_minutes = secs % (60 * 60);
@@ -24,12 +27,6 @@ class TimerCount extends React.Component {
       's': seconds
     };
     return obj;
-  }
-
-  componentDidMount() {
-    let timeLeftVar = this.secondsToTime(this.state.seconds);
-    this.setState({ time: timeLeftVar });
-    this.startTimer();
   }
 
   startTimer = () => {
@@ -53,6 +50,10 @@ class TimerCount extends React.Component {
       seconds: seconds,
     });
 
+    if (!this.state.isPrep) {
+      this.props.increaseTimerCount();
+    }
+
     // Check if we're at zero.
     if (seconds === 0) {
       clearInterval(this.timer);
@@ -62,6 +63,12 @@ class TimerCount extends React.Component {
         this.props.handleTestTimerStop();
       }
     }
+  }
+
+  componentDidMount = () => {
+    let timeLeftVar = this.secondsToTime(this.state.seconds);
+    this.setState({ time: timeLeftVar });
+    this.startTimer();
   }
 
   render() {
@@ -76,5 +83,11 @@ class TimerCount extends React.Component {
     );
   }
 }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     incrementTimerCount: () => dispatch(incrementTimerCount())
+//   };
+// };
 
 export default TimerCount;

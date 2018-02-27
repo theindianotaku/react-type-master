@@ -17,3 +17,9 @@ export const incrementWordCount = () => {
     type: 'INCREMENT_WORD_COUNT'
   };
 };
+
+export const incrementTimerCount = () => {
+  return {
+    type: 'INCREMENT_TIMER_COUNT'
+  };
+};

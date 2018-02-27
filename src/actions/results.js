@@ -6,7 +6,7 @@ export const incrementTotalCount = () => ({
   type: 'INCREMENT_TOTAL_COUNT'
 });
 
-export const setTimeTaken = (timeTaken) => ({
-  type: 'SET_TIME_TAKEN',
-  timeTaken
+export const setTimeElapsed = (timeElapsed) => ({
+  type: 'SET_TIME_ELAPSED',
+  timeElapsed
 });

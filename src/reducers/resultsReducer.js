@@ -1,7 +1,7 @@
 const initialState = {
   successCount: 0,
   totalCount: 0,
-  timeTaken: 0
+  timeElapsed: 0
 };
 
 export const resultsReducer = (state = initialState, action) => {
@@ -22,10 +22,10 @@ export const resultsReducer = (state = initialState, action) => {
       };
     }
 
-    case 'SET_TIME_TAKEN': {
+    case 'SET_TIME_ELAPSED': {
       return {
         ...state,
-        timeTaken: action.timeTaken
+        timeElapsed: action.timeElapsed
       };
     }
 

@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Results = ({ results }) => (
+import { calcWPM, calcAccuracy } from '../../utilities';
+
+const Results = ({ results : { successCount, totalCount, timeElapsed } }) => (
   <div className="results-area">
-    <p>{`Accuracy: ${((results.successCount / results.totalCount) * 100)}%`}</p>
-    {/* <p>{`Words per minute: ${((results.successCount / 5) / results.timeElapsed) * 60}`}</p> */}
+    <p>{`Accuracy: ${calcAccuracy(successCount, totalCount)}%`}</p>
+    <p>{`Words per minute: ${calcWPM(successCount, timeElapsed)}`}</p>
   </div>
 );
 

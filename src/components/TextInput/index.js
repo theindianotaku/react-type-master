@@ -59,6 +59,7 @@ class TextInput extends Component {
         if ( i < targetWord.length || i > targetWord.length) {
           setCount(i);
           if((wordCount === targetWordCount - 1) && (i === targetWord.length -1) && !isError) {
+            this.increaseWordCount();
             this.stopTest();
           }
         } else if ( i === targetWord.length) {

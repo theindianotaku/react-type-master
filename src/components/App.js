@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Divider } from 'semantic-ui-react';
 
 import fetchTargetText from '../thunks/fetchTargetText';
-import { setTimeTaken } from '../actions/results';
+import { setTimeElapsed } from '../actions/results';
 import { incrementWordCount } from '../actions/progressCount';
 
 import TargetText from './TargetText';
@@ -15,8 +15,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      testStatus: 'stopped'
+      testStatus: 'stopped',
+      timerCount: 0
     };
+  }
+
+  increaseTimerCount = () => {
+    const timerCount = this.state.timerCount + 1;
+    this.setState(() => ({ timerCount }));
   }
 
   stopTest = () => {
@@ -33,6 +39,7 @@ class App extends Component {
 
   incrementWordCount = () => {
     this.props.incrementWordCount();
+    this.props.setTimeElapsed(this.state.timerCount);
   }
 
   componentDidMount = () => {
@@ -44,7 +51,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="test-area">
-          <Timer />
+          <Timer 
+            increaseTimerCount={this.increaseTimerCount}
+          />
           <Divider />
           <div className="target-area">
             <TargetText />
@@ -57,7 +66,7 @@ class App extends Component {
             />
           }
         </div>
-        {/* <Results results={this.props.results} /> */}
+        <Results results={this.props.results} />
       </div>
     );
   }
@@ -71,7 +80,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchTargetText: () => dispatch(fetchTargetText()),
     incrementWordCount: () => dispatch(incrementWordCount()),
-    setTimeTaken: (timeTaken) => dispatch(setTimeTaken(timeTaken)),
+    setTimeElapsed: (timeElapsed) => dispatch(setTimeElapsed(timeElapsed)),
   };
 };
 
