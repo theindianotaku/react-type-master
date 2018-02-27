@@ -29,3 +29,7 @@ export const incrementTimerCount = () => {
     type: 'INCREMENT_TIMER_COUNT'
   };
 };
+
+export const resetProgress = () => ({
+  type: 'RESET_PROGRESS'
+});

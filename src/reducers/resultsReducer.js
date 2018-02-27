@@ -29,6 +29,12 @@ export const resultsReducer = (state = initialState, action) => {
       };
     }
 
+    case 'RESET_RESULTS': {
+      return {
+        ...initialState
+      };
+    }
+
     default:
       return state;
   }

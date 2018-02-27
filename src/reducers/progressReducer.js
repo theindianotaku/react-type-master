@@ -15,13 +15,6 @@ export const progressReducer = (state = initialState, action) => {
       };
     }
 
-    case 'STOP_TEST': {
-      return {
-        ...state,
-        testStatus: 'COMPLETED'
-      };
-    }
-
     case 'INCREMENT_WORD_COUNT': {
       const wordCount = state.wordCount + 1;
       return {
@@ -51,6 +44,12 @@ export const progressReducer = (state = initialState, action) => {
       return {
         ...state,
         timerCount
+      };
+    }
+
+    case 'RESET_PROGRESS': {
+      return {
+        ...initialState
       };
     }
     

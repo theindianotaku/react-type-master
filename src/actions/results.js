@@ -10,3 +10,7 @@ export const setTimeElapsed = (timeElapsed) => ({
   type: 'SET_TIME_ELAPSED',
   timeElapsed
 });
+
+export const resetResults = () => ({
+  type: 'RESET_RESULTS'
+});
