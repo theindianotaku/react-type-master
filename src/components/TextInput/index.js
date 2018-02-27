@@ -79,6 +79,14 @@ class TextInput extends Component {
     this.props.setSuccessCharCount(charCount);
   }
 
+  handleRef = (c) => {
+    this.inputRef = c;
+  }
+
+  focusInput = () => {
+    this.inputRef.focus();
+  }
+
   handleChange = (e) => {
     e.preventDefault();
     const value = e.target.value;
@@ -97,12 +105,17 @@ class TextInput extends Component {
     }
   }
 
+  componentDidUpdate = () => {
+    if(this.props.progress.testStatus === 'IN_PROGRESS') this.focusInput();
+  }
+
   render () {
     return (
       <div>
         <Input
+          ref={this.handleRef}
           error={this.state.isError}
-          disabled={this.state.isDisabled}
+          disabled={this.props.progress.testStatus === 'IN_PREP' ? true : false}
           fluid
           size='huge'
           value={this.state.value}

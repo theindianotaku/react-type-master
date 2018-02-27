@@ -5,7 +5,7 @@ import { history } from '../routers/AppRouter';
 
 import fetchTargetText from '../thunks/fetchTargetText';
 import { setTimeElapsed } from '../actions/results';
-import { incrementWordCount, completeTest } from '../actions/progressCount';
+import { incrementWordCount, startTest, completeTest } from '../actions/progressCount';
 
 import TargetText from './TargetText';
 import TextInput from './TextInput';
@@ -20,14 +20,13 @@ class App extends Component {
     };
   }
 
+  startTest = () => {
+    this.props.startTest();
+  }
+
   increaseTimerCount = () => {
     const timerCount = this.state.timerCount + 1;
     this.setState(() => ({ timerCount }));
-  }
-
-  stopTest = () => {
-    this.props.completeTest();
-    history.push('/results');
   }
 
   incrementWordCount = () => {
@@ -35,8 +34,13 @@ class App extends Component {
     this.props.setTimeElapsed(this.state.timerCount);
   }
 
+  stopTest = () => {
+    this.props.completeTest();
+    history.push('/results');
+  }
+
   componentWillMount = () => {
-    if (this.props.testStatus !== 'IN_PROGRESS') {
+    if (this.props.testStatus !== 'IN_PREP') {
       history.push('/');
     }
   }
@@ -52,6 +56,7 @@ class App extends Component {
         <div className="test-area">
           <Timer 
             increaseTimerCount={this.increaseTimerCount}
+            startTest={this.startTest}
             stopTest={this.stopTest}
           />
           <Divider />
@@ -82,6 +87,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchTargetText: () => dispatch(fetchTargetText()),
     incrementWordCount: () => dispatch(incrementWordCount()),
     setTimeElapsed: (timeElapsed) => dispatch(setTimeElapsed(timeElapsed)),
+    startTest: () => dispatch(startTest()),
     completeTest: () => dispatch(completeTest())
   };
 };

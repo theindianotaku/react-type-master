@@ -55,9 +55,10 @@ class TimerCount extends React.Component {
     if (seconds === 0) {
       clearInterval(this.timer);
       if (this.state.isPrep) {
+        this.props.startTest();
         this.startTestTimer(this.testTime);
       } else {
-        this.props.handleTestTimerStop();
+        this.props.stopTest();
       }
     }
   }

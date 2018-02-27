@@ -8,6 +8,13 @@ const initialState = {
 
 export const progressReducer = (state = initialState, action) => {
   switch(action.type) {
+    case 'START_PREP': {
+      return {
+        ...state,
+        testStatus: 'IN_PREP'
+      };
+    }
+
     case 'START_TEST': {
       return {
         ...state,

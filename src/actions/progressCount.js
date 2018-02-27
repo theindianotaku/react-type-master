@@ -1,3 +1,9 @@
+export const startPrep = () => {
+  return {
+    type: 'START_PREP'
+  };
+};
+
 export const startTest = () => {
   return {
     type: 'START_TEST'
