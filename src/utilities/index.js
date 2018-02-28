@@ -1,5 +1,13 @@
 import _ from 'lodash';
 
+const roundToOneDecimal = (number) => {
+  return Number(Math.round(number + 'e1') + 'e-1');
+};
+
+const roundToWholeNumber = (number) => {
+  return Number((number).toFixed(0));
+};
+
 export const trimStringOfPtags = (target) => {
   const trimPtags = target.replace(/(<p[^>]+?>|<p>|<\/p>)/img, ' ');
   const trimSpaces = _.trim(trimPtags);
@@ -25,9 +33,17 @@ export const checkIfValidInput = (key) => {
 };
 
 export const calcWPM = (successCount, timeElapsed) => {
-  return (((successCount / 5) / timeElapsed) * 60);
+  if (timeElapsed) {
+    return roundToWholeNumber(((successCount / 5) / timeElapsed) * 60);
+  } else {
+    return 0;
+  }
 };
 
 export const calcAccuracy = (successCount, totalCount) => {
-  return ((successCount / totalCount) * 100);
+  if (totalCount) {
+    return roundToOneDecimal((successCount / totalCount) * 100);
+  } else {
+    return 0;
+  }
 };

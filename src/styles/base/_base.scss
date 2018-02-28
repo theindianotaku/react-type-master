@@ -4,6 +4,16 @@ body {
   padding: 0;
 }
 
+div#root {
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.m-b-l {
+  margin-bottom: $l-size;
+}
+
 .text-red {
   color: $red !important;
 }

@@ -1,12 +1,114 @@
 .main-container {
-  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 6em 4em 4em 4em;
+
+  height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  > * {
+    position: relative;
+    z-index: 2;
+  }
 }
 
-.App-logo {
-  animation: AppLogoSpin infinite 20s linear;
+.landing__header {
+  h1 {
+    font-size: 3.25em;
+    margin: 0 0 0.55em 0;
+  }
+
+  p {
+    font-size: 1.35em;
+    line-height: 1.65em;
+  }
 }
 
-@keyframes AppLogoSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.landing__actions {
+  display: flex;
+  position: relative;
+  margin: 0 0 2em 0;
+}
+
+.landing__footer {
+  transition: opacity 0.5s ease-in-out;
+  bottom: 4em;
+  color: $blue;
+  left: 4em;
+  opacity: 0.5;
+  position: absolute;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .icons {
+    margin: 0 0 0.5em 0;
+    padding-left: 0;
+    li {
+      border-left: solid 1px rgba(255, 255, 255, 0.25);
+      display: inline-block;
+      line-height: 1em;
+      margin: 0 0 0 0.75em;
+      padding: 0 0 0 0.75em;
+
+      &:first-child {
+        border-left: 0;
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+
+    a {
+      color: $blue;
+      i {
+        color: $blue;
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 0.8em;
+    list-style: none;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+
+  .landing__footer {
+    bottom: 3.5em;
+    left: 3.5em;
+  }
+
+}
+
+@media screen and (max-width: 736px) {
+
+  .landing__footer {
+    bottom: 2em;
+    left: 2em;
+  }
+}
+
+@media screen and (max-width: 360px) {
+
+  .landing__footer {
+    bottom: 1.25em;
+    left: 1.25em;
+  }
+
+}
+
+@media screen and (max-height: 640px) {
+
+  .landing__footer {
+    bottom: auto;
+    left: auto;
+    margin: 1em 0 0 0;
+    position: relative;
+  }
+
 }
