@@ -1,11 +1,17 @@
 // colors
+$peach: #f78ca0;
 $red: #db2828;
 $green: #8abc1e;
 $blue: #276f86;
 $blue-grey: #21282e;
+$violet: #b721ff;
+$light-blue: #21d4fd ;
 
 // sizes
 $s-size: 10px;
 $m-size: 16px;
 $l-size: 20px;
 $xl-size: 24px;
+
+// misc
+$linear-gradient: linear-gradient(-45deg, $violet 0%, $light-blue 100%);

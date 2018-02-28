@@ -47,3 +47,10 @@ div#root {
   background-color: lighten($red, 45%);
   border-radius: 2px;
 }
+
+.gradient-text {
+  background: $linear-gradient;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}

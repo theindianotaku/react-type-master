@@ -16,6 +16,7 @@
 
 .landing__header {
   h1 {
+    display: inline-block;
     font-size: 3.25em;
     margin: 0 0 0.55em 0;
   }
@@ -32,10 +33,16 @@
   margin: 0 0 2em 0;
 }
 
+a.landing__start-button.ui.button {
+  background: initial;
+  color: #ffffff;
+  background-image: $linear-gradient;
+}
+
 .landing__footer {
   transition: opacity 0.5s ease-in-out;
   bottom: 4em;
-  color: $blue;
+  color: $blue-grey;
   left: 4em;
   opacity: 0.5;
   position: absolute;
@@ -62,9 +69,9 @@
     }
 
     a {
-      color: $blue;
+      color: $blue-grey;
       i {
-        color: $blue;
+        color: $blue-grey;
       }
     }
   }

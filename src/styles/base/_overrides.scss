@@ -1,0 +1,8 @@
+.ui.button {
+  box-shadow: 0 0px 6px rgba(54, 165, 244, 0.1), 0 1px 3px rgba(0,0,0,.08);
+  transition: box-shadow .1s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 1px 14px 1px rgba(54, 165, 244, 0.1), 0 3px 6px rgba(0,0,0,.08);
+  }
+}
