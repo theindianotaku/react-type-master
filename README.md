@@ -1,5 +1,3 @@
-# README
-
 ## Working demo
 Visit the working demo [here](https://react-type-master.herokuapp.com/).
 
@@ -11,7 +9,7 @@ Code Pairing Task for Frontend Developer profile of [codebrahma](https://codebra
   - ~~fetch challenge text data~~
   - ~~pretty the text data to array of words~~
   - ~~add loading error state handling~~
-- Check the words entered
+- ~~Check the words entered~~
   - ~~add check for each word feature~~
   - ~~show input state changes based on isError~~
   - ~~add input freeze after 10 error count~~
@@ -20,7 +18,7 @@ Code Pairing Task for Frontend Developer profile of [codebrahma](https://codebra
   - ~~add start button~~
   - ~~add timer function to terminate check after timeout~~
   - add reset test
-- Add results
+- ~~Add results~~
   - ~~add results logic~~
   - ~~create modal which displays results~~
 - Styling
@@ -29,16 +27,16 @@ Code Pairing Task for Frontend Developer profile of [codebrahma](https://codebra
   - Results Page
 
 ## How to run
-To install of the NPM modules, enter code below on terminal:
+To install the NPM modules, enter code below on terminal:
 ```
 npm install
 ```
-or if you have yarn:
+or if you have yarn installed:
 ```
 yarn
 ```
 
-Then run:
+Then run this to start the dev server:
 ```
 npm run dev
 ```
