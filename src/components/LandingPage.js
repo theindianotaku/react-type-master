@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { Header, Icon } from 'semantic-ui-react'
+import { Header, Icon } from 'semantic-ui-react';
 
 import { startPrep } from '../actions/progressCount';
 
@@ -29,7 +29,7 @@ const LandingPage = (props) => (
         <li><a href="https://www.google.com" target="_blank"><Icon link size='large' name='mail' /></a></li>
       </ul>
       <ul className="copyright">
-        <li>© Untitled. </li><li>Credits: <a href="http://unsplash.com">Unsplash</a> + <a href="http://html5up.net">HTML5 UP</a></li>
+        <li>© Debashish Nayak 2018. </li>
       </ul>
     </footer>
   </main>
