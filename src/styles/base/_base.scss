@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -53,4 +57,18 @@ div#root {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+.container {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: $tablet) {
+    width: 70%;
+  }
+
+  @media (min-width: $desktop) {
+    width: 60%;
+  }
 }

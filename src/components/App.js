@@ -7,6 +7,7 @@ import fetchTargetText from '../thunks/fetchTargetText';
 import { setTimeElapsed } from '../actions/results';
 import { incrementWordCount, startTest, completeTest } from '../actions/progressCount';
 
+import Header from './Common/Header';
 import TargetText from './TargetText';
 import TextInput from './TextInput';
 import Timer from './Timer';
@@ -52,27 +53,30 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="test-area">
-          <Timer 
-            increaseTimerCount={this.increaseTimerCount}
-            startTest={this.startTest}
-            stopTest={this.stopTest}
-          />
-          <Divider />
-          <div className="target-area">
-            <TargetText />
-          </div>
-          <Divider />
-          {this.state.testStatus === 'started' &&
-            <TextInput
+      <main className="App">
+        <Header />
+        <div className="container">
+          <Results results={this.props.results} />
+          <div className="test-area">
+            <Timer 
+              increaseTimerCount={this.increaseTimerCount}
+              startTest={this.startTest}
               stopTest={this.stopTest}
-              incrementWordCount={this.incrementWordCount}
             />
-          }
+            <Divider />
+            <div className="target-area">
+              <TargetText />
+            </div>
+            <Divider />
+            {this.state.testStatus === 'started' &&
+              <TextInput
+                stopTest={this.stopTest}
+                incrementWordCount={this.incrementWordCount}
+              />
+            }
+          </div>
         </div>
-        <Results results={this.props.results} />
-      </div>
+      </main>
     );
   }
 }

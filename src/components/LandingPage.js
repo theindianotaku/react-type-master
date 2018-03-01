@@ -9,7 +9,7 @@ import { startPrep } from '../actions/progressCount';
 const LandingPage = (props) => (
   <main className='main-container'>
     <header className='landing__header m-b-l'>
-      <Header as='h1' className='gradient-text'>Type Master</Header>
+      <Header as='h1' className='gradient-text'>type-master</Header>
       <p>A simple app to test your typing speed.</p>
     </header>
     <section className='landing__actions'>
@@ -24,7 +24,7 @@ const LandingPage = (props) => (
     <footer className="landing__footer">
       <ul className="icons">
         <li><a href="https://github.com/theindianotaku" rel='noreferrer noopener' target="_blank"><Icon link size='large' name='github' /></a></li>
-        <li><a href="https://www.linkedin.com/in/debashishnayak/" rel='noreferrer noopener' target="_blank"><Icon link size='large' name='linkedin' /></a></li>
+        <li><a href="https://www.linkedin.com/in/debashishnayak/" rel='noreferrer noopener' target="_blank"><Icon link size='large' name='linkedin in' /></a></li>
         <li><a href="https://www.instagram.com/debashish.nayak/" rel='noreferrer noopener' target="_blank"><Icon link size='large' name='instagram' /></a></li>
         <li><a href="mailto:debashishzero@gmail.com" rel='noreferrer noopener' target="_blank"><Icon link size='large' name='mail' /></a></li>
       </ul>

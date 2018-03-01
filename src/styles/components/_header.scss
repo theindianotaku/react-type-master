@@ -1,0 +1,30 @@
+nav.header {
+  height: 80px;
+  border-bottom: 1px solid lighten($blue-grey, 20%)
+}
+
+.header__container {
+  align-items: center;
+  display: flex;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.header__logo {
+  width: 26px;
+  margin-right: 12px;
+}
+
+.header__title {
+  bottom: 2px;
+  margin: 0;
+  position: relative;
+}
+
+.header a.header__action {
+  box-shadow: none;
+  margin-left: auto;
+  &:hover {
+    box-shadow: none;
+  }
+}

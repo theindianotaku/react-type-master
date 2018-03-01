@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => (
-  <nav id="header" className="ui inverted top fixed menu">
-    <div className="ui container">
-      <a className="header item m-r-md">
-        <img alt="logo" className="ui mini image m-r-md App-logo" src={require('../../images/logo.svg')} />
-        Type Master
-      </a>
+  <nav className="header">
+    <div className="header__container container">
+      <img alt="logo" className="header__logo" src={require('../../images/logo.svg')} />
+      <h2 className="header__title gradient-text">type-master</h2>
+      <Link 
+        className="ui button small negative labeled icon header__action" 
+        to="/"
+      >
+        <i className="stop icon"></i>Stop
+      </Link>
     </div>
   </nav>
 );
