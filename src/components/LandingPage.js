@@ -9,7 +9,10 @@ import { startPrep } from '../actions/progressCount';
 const LandingPage = (props) => (
   <main className='main-container'>
     <header className='landing__header m-b-l'>
-      <Header as='h1' className='gradient-text'>type-master</Header>
+      <div className="valign-wrapper m-b-l">
+        <img alt="logo" className="header__logo" src={require('../images/logo.svg')} />
+        <Header as='h1' className='m-t-0 gradient-text'>type-master</Header>
+      </div>
       <p>A simple app to test your typing speed.</p>
     </header>
     <section className='landing__actions'>

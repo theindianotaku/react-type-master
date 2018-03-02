@@ -15,10 +15,6 @@ div#root {
   width: 100%;
 }
 
-.m-b-l {
-  margin-bottom: $l-size;
-}
-
 .text-red {
   color: $red !important;
 }
@@ -72,4 +68,9 @@ div#root {
   @media (min-width: $desktop) {
     width: 60%;
   }
+}
+
+.valign-wrapper {
+  display: flex;
+  align-items: center;
 }

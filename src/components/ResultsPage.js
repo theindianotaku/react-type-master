@@ -19,7 +19,7 @@ const ResultsPage = ({
   };
 
   return (
-    testStatus === 'YET_TO_START' ? (
+    testStatus === 'COMPLETED' ? (
       <div>
         <Header />
         <div className="results container">
