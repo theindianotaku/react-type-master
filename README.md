@@ -14,17 +14,17 @@ Code Pairing Task for Frontend Developer profile of [codebrahma](https://codebra
   - ~~show input state changes based on isError~~
   - ~~add input freeze after 10 error count~~
   - ~~add check to freeze input after word count reach end~~
-- Add timer
+- ~~Add timer~~
   - ~~add start button~~
   - ~~add timer function to terminate check after timeout~~
-  - add reset test
+  - ~~add reset test~~
 - ~~Add results~~
   - ~~add results logic~~
   - ~~create modal which displays results~~
-- Styling
+- ~~Styling~~
   - ~~Landing Page~~
-  - Test Page
-  - Results Page
+  - ~~Test Page~~
+  - ~~Results Page~~
 
 ## How to run
 To install the NPM modules, enter code below on terminal:
