@@ -19,17 +19,27 @@ const ResultsPage = ({
   };
 
   return (
-    testStatus === 'COMPLETED' ? (
+    testStatus === 'YET_TO_START' ? (
       <div>
         <Header />
-        <div className="container">
+        <div className="results container">
           <Link 
-            className="ui button secondary" 
+            className="ui button labeled icon target-area__action" 
             to="/"
             onClick={resetTest}
-          >Return Home</Link>
-          <p>{`Accuracy: ${calcAccuracy(successCount, totalCount)}%`}</p>
-          <p>{`Words per minute: ${calcWPM(successCount, timeElapsed)}`}</p>
+          >
+            <i className="arrow left icon"></i>Return Home
+          </Link>
+          <ul className="target-area__results">
+            <li>
+              <h4 >Accuracy</h4>
+              <h1>{`${calcAccuracy(successCount, totalCount)}%`}</h1>
+            </li>
+            <li>
+              <h4>Words per minute</h4>
+              <h1>{`${calcWPM(successCount, timeElapsed)}`}</h1>
+            </li>
+          </ul>
         </div>
       </div>
     ) : (

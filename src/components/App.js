@@ -41,9 +41,9 @@ class App extends Component {
   }
 
   componentWillMount = () => {
-    // if (this.props.testStatus !== 'IN_PREP') {
-    //   history.push('/');
-    // }
+    if (this.props.testStatus !== 'IN_PREP') {
+      history.push('/');
+    }
   }
 
   componentDidMount = () => {
