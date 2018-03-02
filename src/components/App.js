@@ -55,15 +55,13 @@ class App extends Component {
     return (
       <main className="App">
         <Header />
-        <div className="container">
-          <Results results={this.props.results} />
-          <div className="test-area">
+        <div className="test-area container">
+          <div className="test-area__target">
             <Timer 
               increaseTimerCount={this.increaseTimerCount}
               startTest={this.startTest}
               stopTest={this.stopTest}
             />
-            <Divider />
             <div className="target-area">
               <TargetText />
             </div>
@@ -75,6 +73,7 @@ class App extends Component {
               />
             }
           </div>
+          <Results results={this.props.results} />          
         </div>
       </main>
     );

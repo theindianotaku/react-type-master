@@ -1,0 +1,45 @@
+// results area
+.target-area__results {
+  display: flex;
+  flex-direction: row;  
+  list-style: none;
+  align-items: center;
+  padding: 25px 0;
+
+  @media (min-width: $desktop) {
+    padding-left: 25px;
+    flex-direction: column;
+  }
+
+  a.target-area__action {
+    box-shadow: none;
+    margin-left: auto;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.target-area__results > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+
+  @media (min-width: $desktop) {
+    align-items: flex-end;
+    justify-content: center; 
+    flex: 0 1 60px;    
+    margin-left: auto;
+  }
+
+  h2 {
+    color: lighten($blue, 10%);
+    margin: 0;
+  }
+
+  h4 {
+    color: lighten($blue-grey, 50%);
+    margin: 0;    
+  }
+}

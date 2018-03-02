@@ -1,6 +1,15 @@
 .timer {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+
+  h4 {
+    color: lighten($blue-grey, 50%);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   h3 {
     margin-top: 0;
     margin-bottom: 0;

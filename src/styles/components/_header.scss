@@ -1,6 +1,7 @@
 nav.header {
   height: 80px;
-  border-bottom: 1px solid lighten($blue-grey, 20%)
+  border-bottom: 1px solid #eef1f4;
+  box-shadow: 0 1px 6px 0 rgba(54, 165, 244, 0.01), 0 1px 6px rgba(0,0,0,.01);
 }
 
 .header__container {
@@ -19,12 +20,4 @@ nav.header {
   bottom: 2px;
   margin: 0;
   position: relative;
-}
-
-.header a.header__action {
-  box-shadow: none;
-  margin-left: auto;
-  &:hover {
-    box-shadow: none;
-  }
 }

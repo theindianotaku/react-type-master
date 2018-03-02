@@ -75,11 +75,11 @@ class TimerCount extends React.Component {
 
   render() {
     return(
-      <span className='text-blue'>
+      <span className='text-red'>
         {this.state.isPrep &&
-          <span className='text-blue'>Prep time  </span>
+          <span className='text-red'>Prep time  </span>
         }
-        <Icon name='time' className='text-blue' />
+        <Icon name='time' className='text-red' />
         <strong>{this.state.time.m}</strong>m <strong>{this.state.time.s}</strong>s
       </span>
     );
