@@ -22,15 +22,15 @@
     "lodash": "^4.17.5",
     "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.3.0",
-    "semantic-ui-react": "^0.78.2"
+    "semantic-ui-react": "^0.81.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
