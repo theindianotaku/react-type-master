@@ -14,23 +14,26 @@
     "build": "npm run build-css && react-scripts build",
     "heroku-postbuild": "yarn run build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "express": "^4.16.2",
     "history": "^4.7.2",
     "lodash": "^4.17.5",
-    "node-sass-chokidar": "^0.0.3",
+    "node-sass-chokidar": "^2.0.0",
     "npm-run-all": "^4.1.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1",
+    "react-scripts": "5.0.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.3.0",
-    "semantic-ui-react": "^0.78.2"
+    "semantic-ui-react": "^0.81.2",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
@@ -50,5 +53,6 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
-  }
+  },
+  "snyk": true
 }
